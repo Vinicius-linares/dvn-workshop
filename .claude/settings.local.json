@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__aws-mcp__aws___call_aws"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "aws-mcp",
+    "terraform"
+  ]
+}
