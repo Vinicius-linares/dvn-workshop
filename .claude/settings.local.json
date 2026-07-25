@@ -1,7 +1,22 @@
 {
   "permissions": {
     "allow": [
-      "mcp__aws-mcp__aws___call_aws"
+      "mcp__aws-mcp__aws___call_aws",
+      "mcp__aws-mcp__aws___search_documentation",
+      "mcp__terraform__get_latest_provider_version",
+      "mcp__terraform__search_providers",
+      "mcp__terraform__get_provider_details",
+      "WebFetch(domain:www.terraform-best-practices.com)",
+      "Bash(terraform fmt *)",
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(terraform init *)",
+      "Bash(echo \"EXIT_INIT:$?\")",
+      "Bash(terraform validate *)",
+      "Bash(echo \"EXIT_VALIDATE:$?\")",
+      "Bash(aws sts *)",
+      "Bash(terraform plan *)",
+      "Bash(terraform apply *)",
+      "Bash(curl -s https://checkip.amazonaws.com)"
     ]
   },
   "enabledMcpjsonServers": [

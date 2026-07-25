@@ -1,0 +1,2 @@
+- [Estado da infraestrutura](project-infra-state.md) — ADR-0001 implementado (arquivos escritos, apply pendente), módulo 01-networking-stack, provider aws 6.56.0, backend local
+- [Convenções Terraform deste projeto](conventions-terraform-naming.md) — variável vpc object, for_each, nomes de arquivo com ponto, outputs sem repetir tipo, default_tags
