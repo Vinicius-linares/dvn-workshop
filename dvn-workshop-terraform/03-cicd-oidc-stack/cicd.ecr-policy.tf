@@ -10,11 +10,18 @@ data "aws_iam_policy_document" "ecr_push" {
 
   # Push actions are scoped to the specific ECR repository ARNs obtained
   # from the 02-eks-cluster-stack remote state output. No ARN is hard-coded.
+  #
+  # BatchGetImage + GetDownloadUrlForLayer são de LEITURA, mas o docker buildx/
+  # BuildKit as exige durante o push: antes de enviar, ele faz um HEAD no manifest
+  # (e checa layers existentes) para pular uploads redundantes. Sem elas, o push
+  # falha com 403 Forbidden no HEAD do manifest, mesmo com as ações de upload.
   statement {
     sid    = "AllowECRPush"
     effect = "Allow"
     actions = [
       "ecr:BatchCheckLayerAvailability",
+      "ecr:BatchGetImage",
+      "ecr:GetDownloadUrlForLayer",
       "ecr:InitiateLayerUpload",
       "ecr:UploadLayerPart",
       "ecr:CompleteLayerUpload",

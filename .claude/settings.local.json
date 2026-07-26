@@ -76,7 +76,12 @@
       "mcp__awslabs_eks-mcp-server__list_api_versions",
       "mcp__awslabs_eks-mcp-server__list_k8s_resources",
       "Bash(node *)",
-      "mcp__awslabs_eks-mcp-server__manage_k8s_resource"
+      "mcp__awslabs_eks-mcp-server__manage_k8s_resource",
+      "Bash(aws iam *)",
+      "Bash(lsof -iTCP:8080 -sTCP:LISTEN -P -n)",
+      "Bash(lsof -iTCP:3000 -sTCP:LISTEN -P -n)",
+      "Bash(pkill -f \"kubectl.*port-forward.*svc/frontend\")",
+      "Bash(kill 54111)"
     ]
   },
   "enabledMcpjsonServers": [

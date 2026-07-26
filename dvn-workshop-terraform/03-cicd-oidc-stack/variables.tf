@@ -9,11 +9,12 @@ variable "default_tags" {
 }
 
 variable "github_oidc" {
-  description = "Configuration for the GitHub Actions OIDC federation: provider URL, audience list, subject claim used in the trust policy condition, and IAM role name. No value is hard-coded in the resource blocks; all concrete values live in terraform.tfvars."
+  description = "Configuration for the GitHub Actions OIDC federation: provider URL, audience list, repository claim (owner/repo) used in the trust policy condition, subject claim pattern, and IAM role name. No value is hard-coded in the resource blocks; all concrete values live in terraform.tfvars."
   type = object({
-    provider_url  = string
-    audiences     = list(string)
-    subject_claim = string
-    role_name     = string
+    provider_url     = string
+    audiences        = list(string)
+    repository_claim = string
+    subject_claim    = string
+    role_name        = string
   })
 }
