@@ -67,7 +67,16 @@
       "Bash(kubectl -n dvn-workshop rollout status deploy/frontend --timeout=120s)",
       "Bash(kubectl -n dvn-workshop get pods -o wide)",
       "Bash(kubectl -n dvn-workshop get deploy)",
-      "Bash(kubectl -n dvn-workshop get svc)"
+      "Bash(kubectl -n dvn-workshop get svc)",
+      "mcp__terraform__search_modules",
+      "WebSearch",
+      "Bash(helm version *)",
+      "Bash(helm repo *)",
+      "Bash(helm env *)",
+      "mcp__awslabs_eks-mcp-server__list_api_versions",
+      "mcp__awslabs_eks-mcp-server__list_k8s_resources",
+      "Bash(node *)",
+      "mcp__awslabs_eks-mcp-server__manage_k8s_resource"
     ]
   },
   "enabledMcpjsonServers": [

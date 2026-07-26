@@ -2,12 +2,12 @@
   "apps": [
     {
       "context": "backend/YoutubeLiveApp",
-      "repository": "devops-na-nuvem/prod/backend",
+      "repository": "dvn-workshop/production/backend",
       "dockerfile": "Dockerfile"
     },
     {
       "context": "frontend/youtube-live-app",
-      "repository": "devops-na-nuvem/prod/frontend",
+      "repository": "dvn-workshop/production/frontend",
       "dockerfile": "Dockerfile"
     }
   ]

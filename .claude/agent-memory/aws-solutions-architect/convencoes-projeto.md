@@ -8,7 +8,7 @@ metadata:
 Convenções do repo dvn-workshop-julho (não há CLAUDE.md nem MEMORY.md na raiz que as formalizem — foram inferidas do código):
 
 - **Naming**: recursos usam prefixo `dvn-bigode-` na tag `Name` (ex.: VPC `dvn-bigode-vpc`).
-- **ADRs**: numeração sequencial, kebab-case no slug: `docs/ADR-NNNN-<slug>.md`. Existentes: **ADR-0001** (VPC/rede, Aprovado), **ADR-0002** (backend S3, Aprovado), **ADR-0003** (cluster EKS stack 02, Não aprovado). Próximo = 0004.
+- **ADRs**: numeração sequencial, kebab-case no slug: `docs/ADR-NNNN-<slug>.md`. Existentes: **ADR-0001** (VPC/rede, Aprovado), **ADR-0002** (backend S3, Aprovado), **ADR-0003** (cluster EKS stack 02, **Aprovado** por Kenerry Serain 2026-07-26), **ADR-0004** (OIDC GitHub->AWS, stack 03-cicd-oidc-stack), **ADR-0005** (ArgoCD install + GitOps), **ADR-0006** (GitHub Actions CI com path filters), **ADR-0007** (image-tag SHA + write-back kustomize). Próximo = 0008.
 - **Consumo entre stacks**: stacks consomem outputs de stacks anteriores via `data "terraform_remote_state"` no mesmo bucket S3 (key por stack). Ex.: a `02-eks-cluster-stack` lê a `01` na key `01-networking-stack/terraform.tfstate`. Outputs da `01`: `vpc_id`, `vpc_cidr_block`, `public_subnet_ids` (MAP nome=>id), `private_subnet_ids` (MAP), `internet_gateway_id`, `nat_gateway_id`, `nat_eip_public_ip`. Para virar lista de IDs usar `values(...)`.
 - **EKS**: preferência do time por **módulo `terraform-aws-modules/eks/aws`** (v21, pin `~> 21.0`) em vez de recursos nativos, pelo ganho operacional (IAM/OIDC/access entries encapsulados).
 - Todo recurso AWS de um ADR deve carregar a tag `adr=ADR-NNNN`.
