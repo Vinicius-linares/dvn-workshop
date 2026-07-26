@@ -37,3 +37,12 @@ variable "eks" {
     }))
   })
 }
+
+variable "ecr_repositories" {
+  description = "List of ECR repositories to create, each with its own name, tag mutability, and image scanning configuration. No value is hard-coded in the resource blocks; all concrete values live in terraform.tfvars."
+  type = list(object({
+    name                 = string
+    image_tag_mutability = string
+    scan_on_push         = bool
+  }))
+}

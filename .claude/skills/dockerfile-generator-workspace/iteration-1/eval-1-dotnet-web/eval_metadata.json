@@ -1,0 +1,15 @@
+{
+  "eval_id": 1,
+  "eval_name": "dotnet-web-http",
+  "prompt": "Preciso conteinerizar essa aplicação ASP.NET Core pra produção. Faz um Dockerfile otimizado, rootless, com imagem pequena e healthcheck, e valida que funciona subindo o container.",
+  "assertions": [
+    {"text": "Dockerfile existe no diretório de outputs"},
+    {"text": "Multi-stage: build com SDK e runtime com aspnet (sem SDK na imagem final)"},
+    {"text": "Define USER não-root (app) — rootless"},
+    {"text": "Contém instrução HEALTHCHECK"},
+    {"text": "Roda dotnet restore antes de copiar todo o código (cache de layer)"},
+    {"text": "Gera .dockerignore cobrindo bin/ e obj/"},
+    {"text": "Porta 8080 (padrão Kestrel .NET 8) configurada/exposta"},
+    {"text": "VALIDATION.md reporta healthcheck healthy e curl OK"}
+  ]
+}

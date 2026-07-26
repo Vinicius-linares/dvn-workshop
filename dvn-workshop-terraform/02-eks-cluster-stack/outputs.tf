@@ -57,3 +57,13 @@ output "eks_openid_connect_provider_url" {
   description = "The URL of the IAM OIDC provider (without https:// prefix), used in IAM role trust policies for IRSA."
   value       = aws_iam_openid_connect_provider.eks.url
 }
+
+output "ecr_repository_urls" {
+  description = "Map of ECR repository name to its repository URL, used to tag and push container images."
+  value       = { for name, repo in aws_ecr_repository.this : name => repo.repository_url }
+}
+
+output "ecr_repository_arns" {
+  description = "Map of ECR repository name to its ARN."
+  value       = { for name, repo in aws_ecr_repository.this : name => repo.arn }
+}

@@ -1,0 +1,14 @@
+{
+  "apps": [
+    {
+      "context": "backend/YoutubeLiveApp",
+      "repository": "devops-na-nuvem/prod/backend",
+      "dockerfile": "Dockerfile"
+    },
+    {
+      "context": "frontend/youtube-live-app",
+      "repository": "devops-na-nuvem/prod/frontend",
+      "dockerfile": "Dockerfile"
+    }
+  ]
+}

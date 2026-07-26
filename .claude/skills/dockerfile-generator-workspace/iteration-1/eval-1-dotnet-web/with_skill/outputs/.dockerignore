@@ -1,0 +1,39 @@
+# Artefatos de build .NET (recompilados dentro do estágio de build)
+bin/
+obj/
+**/bin/
+**/obj/
+
+# Publish local
+publish/
+out/
+
+# Docker
+Dockerfile
+.dockerignore
+
+# VCS e metadados
+.git/
+.gitignore
+.gitattributes
+
+# IDE / editor
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+
+# Segredos e ambiente
+.env
+*.env
+secrets.json
+appsettings.*.Development.json
+
+# SO / diversos
+.DS_Store
+Thumbs.db
+*.log
+
+# Documentação de validação (não faz parte da imagem)
+VALIDATION.md

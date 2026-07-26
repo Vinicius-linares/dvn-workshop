@@ -1,0 +1,48 @@
+{
+  "eval_id": "eval-0-multi-app-parallel",
+  "variant": "with_skill",
+  "pass_count": 8,
+  "total": 8,
+  "expectations": [
+    {
+      "text": "RESULT.md foi gerado",
+      "passed": true,
+      "evidence": "5105 bytes"
+    },
+    {
+      "text": "Registry ECR correto (654654554686.dkr.ecr.us-east-1.amazonaws.com)",
+      "passed": true,
+      "evidence": "registry presente"
+    },
+    {
+      "text": "Menciona login único no ECR via get-login-password",
+      "passed": true,
+      "evidence": "get-login-password presente"
+    },
+    {
+      "text": "Cobre AMBOS os apps (backend e frontend)",
+      "passed": true,
+      "evidence": "backend+frontend"
+    },
+    {
+      "text": "Usa a tag v1.2.0",
+      "passed": true,
+      "evidence": "v1.2.0 presente"
+    },
+    {
+      "text": "Especifica --platform (linux/amd64) para o build",
+      "passed": true,
+      "evidence": "linux/amd64"
+    },
+    {
+      "text": "Descreve build/push em paralelo (simultâneo)",
+      "passed": true,
+      "evidence": "paralelismo mencionado"
+    },
+    {
+      "text": "Não fez push real (dry-run / apenas plano)",
+      "passed": true,
+      "evidence": "dry-run/plano"
+    }
+  ]
+}

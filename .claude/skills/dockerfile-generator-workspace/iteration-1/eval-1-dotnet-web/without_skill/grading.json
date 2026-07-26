@@ -1,0 +1,48 @@
+{
+  "eval_id": "eval-1-dotnet-web",
+  "variant": "without_skill",
+  "pass_count": 8,
+  "total": 8,
+  "expectations": [
+    {
+      "text": "Dockerfile existe no diretório de outputs",
+      "passed": true,
+      "evidence": "1336 bytes"
+    },
+    {
+      "text": "Multi-stage: build com SDK e runtime com aspnet (sem SDK na imagem final)",
+      "passed": true,
+      "evidence": "sdk no build, aspnet no runtime"
+    },
+    {
+      "text": "Define USER não-root (app) — rootless",
+      "passed": true,
+      "evidence": "USER app"
+    },
+    {
+      "text": "Contém instrução HEALTHCHECK",
+      "passed": true,
+      "evidence": "HEALTHCHECK presente"
+    },
+    {
+      "text": "Roda dotnet restore antes de copiar todo o código (cache de layer)",
+      "passed": true,
+      "evidence": "restore antes do código"
+    },
+    {
+      "text": "Gera .dockerignore cobrindo bin/ e obj/",
+      "passed": true,
+      "evidence": "bin/ e obj/ no .dockerignore"
+    },
+    {
+      "text": "Porta 8080 (padrão Kestrel .NET 8) configurada/exposta",
+      "passed": true,
+      "evidence": "8080 presente"
+    },
+    {
+      "text": "VALIDATION.md reporta healthcheck healthy e curl OK",
+      "passed": true,
+      "evidence": "healthy+curl reportados"
+    }
+  ]
+}

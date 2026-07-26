@@ -1,0 +1,15 @@
+{
+  "eval_id": 0,
+  "eval_name": "multi-app-parallel-manifest",
+  "prompt": "Preciso fazer login no ECR e dar build & push das minhas duas aplicações (backend .NET e frontend Next) em dvn-workshop-apps/, ao mesmo tempo. Tag v1.2.0. Dry-run primeiro.",
+  "assertions": [
+    {"text": "RESULT.md foi gerado"},
+    {"text": "Registry ECR correto (654654554686.dkr.ecr.us-east-1.amazonaws.com)"},
+    {"text": "Menciona login único no ECR via get-login-password"},
+    {"text": "Cobre AMBOS os apps (backend e frontend)"},
+    {"text": "Usa a tag v1.2.0"},
+    {"text": "Especifica --platform (linux/amd64) para o build"},
+    {"text": "Descreve build/push em paralelo (simultâneo)"},
+    {"text": "Não fez push real (dry-run / apenas plano)"}
+  ]
+}
