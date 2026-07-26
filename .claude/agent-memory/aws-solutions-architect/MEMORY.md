@@ -2,3 +2,4 @@
 - [Convenções observadas](convencoes-projeto.md) — naming dvn-bigode-*, ADRs numerados a partir de ADR-0001 em docs/
 - [Fatos AWS verificados](fatos-aws-verificados.md) — subnet 1 AZ; NAT GW HA por AZ; provider 6.x tem regional NAT gateway
 - [Fatos Terraform backend S3](fatos-terraform-backend-s3.md) — use_lockfile nativo (TF 1.10+, DynamoDB deprecado); versioning/SSE/public-access-block são recursos separados; chicken-and-egg
+- [Fatos EKS nativo verificados](fatos-eks-nativo-verificados.md) — args exatos aws_eks_cluster/node_group/access_entry/oidc; enabled_cluster_log_types e version (não kubernetes_version); ADR-0003 usa recursos nativos

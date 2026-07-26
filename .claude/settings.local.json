@@ -25,11 +25,21 @@
       "Bash(aws s3api get-public-access-block *)",
       "Bash(aws s3api *)",
       "Bash(python3 -m json.tool)",
-      "Bash(terraform output *)"
+      "Bash(terraform output *)",
+      "mcp__terraform__get_latest_module_version",
+      "mcp__claude_ai_AWS_MCP_Server__aws___call_aws",
+      "Bash(aws eks *)",
+      "mcp__terraform__get_module_details",
+      "mcp__claude_ai_AWS_MCP_Server__aws___search_documentation",
+      "Bash(env)",
+      "Read(//Users/kenerry/.aws/**)",
+      "Bash(AWS_PROFILE=workshop_julho aws sts get-caller-identity *)",
+      "Bash(export AWS_PROFILE=workshop_julho)"
     ]
   },
   "enabledMcpjsonServers": [
     "aws-mcp",
-    "terraform"
+    "terraform",
+    "awslabs.eks-mcp-server"
   ]
 }
