@@ -10,7 +10,7 @@ terraform {
 
   backend "s3" {
     bucket       = "dvn-bigode-tfstate-654654554686-us-east-1"
-    key          = "01-networking-stack/terraform.tfstate"
+    key          = "00-remote-backend-stack/terraform.tfstate"
     region       = "us-east-1"
     encrypt      = true
     use_lockfile = true

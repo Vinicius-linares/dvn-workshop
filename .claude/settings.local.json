@@ -16,7 +16,16 @@
       "Bash(aws sts *)",
       "Bash(terraform plan *)",
       "Bash(terraform apply *)",
-      "Bash(curl -s https://checkip.amazonaws.com)"
+      "Bash(curl -s https://checkip.amazonaws.com)",
+      "Bash(python3 -c \"import json;d=json.load\\(open\\('terraform.tfstate'\\)\\);print\\('resources:',len\\(d.get\\('resources',[]\\)\\),'serial:',d.get\\('serial'\\),'backend:',d.get\\('backend',{}\\).get\\('type','none'\\)\\)\")",
+      "mcp__terraform__get_provider_capabilities",
+      "Bash(aws s3 ls *)",
+      "Bash(aws s3api get-bucket-versioning *)",
+      "Bash(aws s3api get-bucket-encryption *)",
+      "Bash(aws s3api get-public-access-block *)",
+      "Bash(aws s3api *)",
+      "Bash(python3 -m json.tool)",
+      "Bash(terraform output *)"
     ]
   },
   "enabledMcpjsonServers": [

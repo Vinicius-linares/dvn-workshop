@@ -1,0 +1,2 @@
+- [Backend remoto Terraform S3](infra-remote-backend.md) — bucket dvn-bigode-tfstate-654654554686-us-east-1, keys por stack, use_lockfile=true
+- [Estado da 01-networking-stack](infra-estado-networking.md) — 14 recursos aplicados, backend migrado para S3 (ADR-0002)

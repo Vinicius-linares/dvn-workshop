@@ -1,3 +1,4 @@
 - [Estado da Infra dvn-workshop](infra-estado-atual.md) — VPC única em us-east-1, provider AWS 6.x, state local, sem CLAUDE.md/MEMORY.md/docs na raiz
 - [Convenções observadas](convencoes-projeto.md) — naming dvn-bigode-*, ADRs numerados a partir de ADR-0001 em docs/
 - [Fatos AWS verificados](fatos-aws-verificados.md) — subnet 1 AZ; NAT GW HA por AZ; provider 6.x tem regional NAT gateway
+- [Fatos Terraform backend S3](fatos-terraform-backend-s3.md) — use_lockfile nativo (TF 1.10+, DynamoDB deprecado); versioning/SSE/public-access-block são recursos separados; chicken-and-egg
