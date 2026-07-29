@@ -1,11 +1,6 @@
 # ADR-0006 — CI pipeline for the frontend application.
 # Trigger: push to main that touches dvn-workshop-apps/frontend/**
 # Sequence: OIDC assume-role -> ECR login -> docker build+push (tag=sha) ->
-#            kustomize edit set image -> commit & push manifest (triggers ArgoCD ADR-0005)
-# Role ARN (ADR-0004) stored in repository variable AWS_GHA_ROLE_ARN.
-# ADR-0006 — CI pipeline for the frontend application.
-# Trigger: push to main that touches dvn-workshop-apps/frontend/**
-# Sequence: OIDC assume-role -> ECR login -> docker build+push (tag=sha) ->
 #           kustomize edit set image -> commit & push manifest (triggers ArgoCD ADR-0005)
 # Role ARN (ADR-0004) stored in repository variable AWS_GHA_ROLE_ARN.
 
@@ -47,7 +42,7 @@ jobs:
       - name: Configure AWS credentials via OIDC
         uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502  # v4.0.2
         with:
-          role-to-assume: arn:aws:iam::934384776856:role/dvn-bigode-github-actions-ecr
+          role-to-assume: arn:aws:iam::934384776856:role/dvn-github-actions-role
           aws-region: us-east-1
 
       - name: Login to Amazon ECR
