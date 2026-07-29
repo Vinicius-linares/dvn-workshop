@@ -1,6 +1,3 @@
-# Central resource for the argocd domain: the Helm release of Argo CD.
-# Installed non-HA (workshop) with server as ClusterIP (no public exposure).
-# Access the UI via: kubectl port-forward svc/argocd-server -n argocd 8080:443
 resource "helm_release" "argo_cd" {
   name             = "argocd"
   repository       = "https://argoproj.github.io/argo-helm"
@@ -8,16 +5,27 @@ resource "helm_release" "argo_cd" {
   version          = var.argocd.chart_version
   namespace        = var.argocd.namespace
   create_namespace = true
-  wait             = true
-  timeout          = 600
+  wait             = false
+  cleanup_on_fail  = true
 
   values = [
-    yamlencode({
-      server = {
-        service = {
-          type = "ClusterIP"
-        }
-      }
-    })
+    <<-EOT
+    server:
+      replicas: 1
+      service:
+        type: ClusterIP
+    controller:
+      replicas: 1
+    repoServer:
+      replicas: 1
+    applicationSet:
+      enabled: false
+    notifications:
+      enabled: false
+    dex:
+      enabled: false
+    redis:
+      enabled: true
+    EOT
   ]
 }
