@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/part-of: dvn-workshop
     app.kubernetes.io/managed-by: kustomize
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: backend
