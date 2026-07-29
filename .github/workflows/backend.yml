@@ -26,9 +26,9 @@ concurrency:
 
 env:
   AWS_REGION: us-east-1
-  ECR_REGISTRY: 654654554686.dkr.ecr.us-east-1.amazonaws.com
-  ECR_REPOSITORY: dvn-workshop/production/backend
-  APP_CONTEXT: dvn-workshop-apps/backend/YoutubeLiveApp
+  ECR_REGISTRY: 934384776856.dkr.ecr.us-east-1.amazonaws.com
+  ECR_REPOSITORY: dvn-workshop/production/frontend
+  APP_CONTEXT: dvn-workshop-apps/frontend/youtube-live-app
   KUSTOMIZE_VERSION: v5.4.3
 
 jobs:
