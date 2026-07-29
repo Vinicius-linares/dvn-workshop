@@ -13,7 +13,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket       = "dvn-bigode-tfstate-654654554686-us-east-1"
+    bucket       = "dvn-tfstate-934384776856-us-east-1"
     key          = "02-eks-cluster-stack/terraform.tfstate"
     region       = "us-east-1"
     encrypt      = true
