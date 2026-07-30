@@ -1,10 +1,4 @@
 # ADR-0006 — CI pipeline for the backend application.
-# Trigger: push to main that touches dvn-workshop-apps/backend/**
-# Sequence: OIDC assume-role -> ECR login -> docker build+push (tag=sha) ->
-#            kustomize edit set image -> commit & push manifest (triggers ArgoCD ADR-0005)
-# Role ARN (ADR-0004) stored in repository variable AWS_GHA_ROLE_ARN.
-
-# ADR-0006 — CI pipeline for the backend application.
 name: backend
 
 on:
