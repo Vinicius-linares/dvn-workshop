@@ -19,6 +19,7 @@ concurrency:
 env:
   AWS_REGION: us-east-1
   ECR_REGISTRY: 934384776856.dkr.ecr.us-east-1.amazonaws.com
+  # 👇 AQUI ESTÁ O NOME CORRETO DO SEU REPOSITÓRIO NA AWS 👇
   ECR_REPOSITORY: dvn-frontend
   APP_CONTEXT: dvn-workshop-apps/frontend/youtube-live-app
   KUSTOMIZE_VERSION: v5.4.3
