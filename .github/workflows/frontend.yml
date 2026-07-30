@@ -1,9 +1,4 @@
 # ADR-0006 — CI pipeline for the frontend application.
-# Trigger: push to main that touches dvn-workshop-apps/frontend/**
-# Sequence: OIDC assume-role -> ECR login -> docker build+push (tag=sha) ->
-#           kustomize edit set image -> commit & push manifest (triggers ArgoCD ADR-0005)
-# Role ARN (ADR-0004) stored in repository variable AWS_GHA_ROLE_ARN.
-
 name: frontend
 
 on:
@@ -15,11 +10,8 @@ on:
       - "dvn-workshop-apps/frontend/**"
 
 permissions:
-  id-token: write   # required for OIDC token exchange
-  contents: write   # required for kustomize write-back commit
+  contents: write
 
-# Serialize manifest write-backs across both workflows so concurrent pushes
-# that touch both apps do not conflict on kustomization.yaml (ADR-0006 E1).
 concurrency:
   group: kustomize-writeback
   cancel-in-progress: false
@@ -37,23 +29,24 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
+        uses: actions/checkout@v4
 
-      - name: Configure AWS credentials via OIDC
-        uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502  # v4.0.2
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::934384776856:role/dvn-github-actions-role
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
       - name: Login to Amazon ECR
         id: ecr-login
-        uses: aws-actions/amazon-ecr-login@062b18b96a7aff071d4dc91bc00c4c1a7945b076  # v2.0.1
+        uses: aws-actions/amazon-ecr-login@v2
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v4  # v4.x.x
+        uses: docker/setup-buildx-action@v3
 
       - name: Build and push frontend image
-        uses: docker/build-push-action@14487ce63c7a62a4a324b0bfb37086795e31c6c1  # v6.16.0
+        uses: docker/build-push-action@v6
         with:
           context: ${{ env.APP_CONTEXT }}
           file: ${{ env.APP_CONTEXT }}/Dockerfile
@@ -62,23 +55,17 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      # Write-back: update kustomization.yaml with the new image tag.
-      # This commit triggers ArgoCD reconciliation (ADR-0005).
-      # Only executed after a successful push to guarantee the tag exists in ECR.
       - name: Install kustomize ${{ env.KUSTOMIZE_VERSION }}
         run: |
-          curl -sSfLo kustomize.tar.gz \
-            "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2F${{ env.KUSTOMIZE_VERSION }}/kustomize_${{ env.KUSTOMIZE_VERSION }}_linux_amd64.tar.gz"
+          curl -sSfLo kustomize.tar.gz "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2F${{ env.KUSTOMIZE_VERSION }}/kustomize_${{ env.KUSTOMIZE_VERSION }}_linux_amd64.tar.gz"
           tar -xzf kustomize.tar.gz
           chmod +x kustomize
           sudo mv kustomize /usr/local/bin/kustomize
-          kustomize version
 
       - name: Update kustomization.yaml with new frontend image tag
         working-directory: dvn-workshop-kubernetes
         run: |
-          kustomize edit set image \
-            dvn-workshop/production/frontend=${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }}
+          kustomize edit set image dvn-workshop/production/frontend=${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }}
 
       - name: Commit and push manifest write-back
         run: |
@@ -87,8 +74,6 @@ jobs:
           git add dvn-workshop-kubernetes/kustomization.yaml
           git diff --cached --quiet && echo "No changes to commit" && exit 0
           git commit -m "chore(cd): frontend image -> ${{ github.sha }} [skip ci]"
-
-          # Retry loop: pull --rebase in case the other workflow pushed concurrently (ADR-0006 E1).
           for i in 1 2 3; do
             git pull --rebase origin main && git push origin main && break || sleep 5
           done
