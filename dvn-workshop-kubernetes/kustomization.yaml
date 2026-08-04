@@ -8,7 +8,7 @@ resources:
 images:
 - name: dvn-workshop/production/backend
   newName: 934384776856.dkr.ecr.us-east-1.amazonaws.com/dvn-backend
-  newTag: a1193f9f9cbaa781b56c1bf5dcdd002150592bdf
+  newTag: 09730ac8f2ac154b5bf937ca4082fff5044bd7d1
 - name: dvn-workshop/production/frontend
   newName: 934384776856.dkr.ecr.us-east-1.amazonaws.com/dvn-frontend
   newTag: 09730ac8f2ac154b5bf937ca4082fff5044bd7d1
