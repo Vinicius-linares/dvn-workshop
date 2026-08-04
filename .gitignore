@@ -187,3 +187,14 @@ override.tf.json
 terraform.rc
 
 # End of https://www.toptal.com/developers/gitignore/api/terraform,dotnetcore,node
+# --- Correções de Segurança e Limpeza Customizadas ---
+# Ignorar planos do Terraform
+*tfplan*
+
+# Ignorar lixo do sistema operacional (Mac/Windows)
+.DS_Store
+Thumbs.db
+
+# Ignorar pastas de IA/Logs locais
+.claude/
+*.log

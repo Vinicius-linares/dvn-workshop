@@ -1,6 +1,0 @@
-- [Estado da infraestrutura](project-infra-state.md) — ADR-0001 implementado (arquivos escritos, apply pendente), módulo 01-networking-stack, provider aws 6.56.0, backend local
-- [Convenções Terraform deste projeto](conventions-terraform-naming.md) — variável vpc object, for_each, nomes de arquivo com ponto, outputs sem repetir tipo, default_tags
-- [Backend remoto Terraform S3](infra-remote-backend.md) — bucket dvn-bigode-tfstate-654654554686-us-east-1, keys por stack, use_lockfile=true
-- [Estado da 01-networking-stack](infra-estado-networking.md) — 14 recursos aplicados, backend migrado para S3 (ADR-0002)
-- [Stack 03 — OIDC GitHub Actions → AWS](infra-estado-oidc-cicd.md) — role dvn-bigode-github-actions-ecr, OIDC provider GitHub, policy ECR least privilege (ADR-0004)
-- [Stack 04 — ArgoCD no EKS](infra-estado-argocd.md) — chart 10.2.1, Application dvn-workshop, sync automated prune+selfHeal, deploy em 2 fases (ADR-0005)
