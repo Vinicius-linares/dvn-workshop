@@ -1,4 +1,6 @@
 resource "helm_release" "argo_cd" {
+  timeout = 600
+  take_ownership = true
   name             = "argocd"
   repository       = "https://argoproj.github.io/argo-helm"
   chart            = "argo-cd"
